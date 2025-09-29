@@ -1,0 +1,16 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  --red: oklch(0.65 0.3, 19.41);
+}
+
+body {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  background: hsl(210deg 15% 6%)
+}
