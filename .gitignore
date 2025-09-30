@@ -78,3 +78,6 @@ temp/
 
 # Local development
 *.local
+
+# Markdown Linting
+.markdownlint.json
