@@ -2,6 +2,8 @@ import { random, range } from "lodash";
 
 const btn = document.querySelector(".particleButton");
 
+const FADE_DURATION = 1000; // Match with CSS animation duration
+
 console.log("Script loaded, button found:", btn);
 
 btn.addEventListener("click", () => {
@@ -12,6 +14,8 @@ btn.addEventListener("click", () => {
   console.log("Is liked:", isLiked);
 
   if (!isLiked) return;
+
+  const particles = [];
 
   range(5).forEach((i) => {
     console.log(`Creating particle ${i + 1}`);
@@ -24,14 +28,19 @@ btn.addEventListener("click", () => {
 
     particle.style.top = top + "%";
     particle.style.left = left + "%";
+    particle.style.animationDuration = `${FADE_DURATION}ms`;
 
     btn.appendChild(particle);
     console.log("Particle added to DOM", particle);
 
-    // Remove particle after animation completes
-    setTimeout(() => {
+    particles.push(particle);
+  });
+
+  // Remove particle after animation completes
+  setTimeout(() => {
+    particles.forEach((particle) => {
       particle.remove();
       console.log("Particle removed");
-    }, 1000);
-  });
+    });
+  }, FADE_DURATION + 200);
 });
